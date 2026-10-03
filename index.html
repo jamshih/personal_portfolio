@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jun-Yuan Shih — builder of WrongBook and SearchRecall." />
+  <title>Jun-Yuan Shih — Builder</title>
+  <style>
+    :root {
+      --bg: #faf6f4;
+      --ink: #171513;
+      --muted: #6f6964;
+      --line: #d9d0cb;
+      --paper: #fffdfb;
+      --accent: #d9ff57;
+      --accent-ink: #1b2100;
+      --max: 1180px;
+      --radius: 26px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .shell { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 15px; font-weight: 750; letter-spacing: -0.01em; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .nav-links a:hover { color: var(--ink); }
+    .top-link { color: var(--ink) !important; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+
+    .hero {
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 64px;
+      align-items: end;
+      padding: 90px 0 78px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero h1 {
+      margin: 0;
+      max-width: 840px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(58px, 7.4vw, 108px);
+      line-height: .93;
+      letter-spacing: -0.055em;
+    }
+    .hero h1 em { font-style: italic; font-weight: 400; }
+    .hero-side { padding-bottom: 8px; }
+    .hero-side p {
+      margin: 0 0 30px;
+      max-width: 440px;
+      font-size: 19px;
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+    }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,.34);
+    }
+
+    section { padding: 92px 0; border-bottom: 1px solid var(--line); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+      margin-bottom: 54px;
+      align-items: start;
+    }
+    .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+    .section-title { margin: 0; font: 500 clamp(34px, 4.5vw, 62px)/1.04 Georgia, serif; letter-spacing: -0.04em; max-width: 820px; }
+
+    .project { display: grid; grid-template-columns: .95fr 1.05fr; gap: 58px; padding: 54px 0; border-top: 1px solid var(--line); align-items: center; }
+    .project:first-of-type { border-top: 0; padding-top: 0; }
+    .project-kicker { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+    .project h3 { margin: 0 0 16px; font: 500 48px/1 Georgia, serif; letter-spacing: -0.04em; }
+    .project p { margin: 0 0 24px; font-size: 17px; line-height: 1.62; color: #393532; max-width: 560px; }
+    .project ul { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; color: var(--muted); font-size: 14px; }
+    .project li::before { content: "↳"; color: var(--ink); margin-right: 10px; }
+    .project-links { display: flex; gap: 20px; font-size: 14px; }
+    .project-links a { text-underline-offset: 5px; }
+    .private { text-decoration: none; color: var(--muted); cursor: default; }
+
+    .product-frame {
+      min-height: 430px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 24px 80px rgba(31,22,17,.06);
+      overflow: hidden;
+      position: relative;
+    }
+    .window-bar { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 3px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #c9c0bb; }
+    .wrongbook-ui { background: #f3eedf; border-radius: 18px; height: 360px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 14px; padding: 16px; }
+    .phone { background: #fff; border: 1px solid #d8d0c7; border-radius: 24px; padding: 12px; max-width: 225px; width: 100%; justify-self: center; box-shadow: 0 12px 30px rgba(54,43,34,.08); }
+    .phone-top { width: 52px; height: 6px; border-radius: 8px; background: #202020; margin: 0 auto 14px; }
+    .question { font-family: Georgia, serif; font-size: 16px; line-height: 1.35; padding: 8px 3px 22px; }
+    .sketch { height: 96px; border: 1px solid #ddd5ce; border-radius: 10px; position: relative; margin: 8px 0 16px; background: linear-gradient(#fff,#fbfaf9); }
+    .sketch:before { content: ""; position: absolute; left: 30px; top: 56px; width: 110px; height: 1px; background: #292929; transform: rotate(-21deg); transform-origin: left; }
+    .sketch:after { content: "42°"; position: absolute; left: 72px; top: 37px; font: 12px Georgia, serif; }
+    .scan-button { background: var(--ink); color: #fff; border-radius: 10px; padding: 11px; text-align: center; font-size: 12px; }
+    .flow { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+    .flow-card { border: 1px solid #dad2cc; background: rgba(255,255,255,.8); border-radius: 15px; padding: 15px 16px; }
+    .flow-card strong { font-size: 13px; display: block; margin-bottom: 5px; }
+    .flow-card span { font-size: 12px; color: var(--muted); line-height: 1.45; display: block; }
+    .arrow { color: #9f9690; text-align: center; font-size: 12px; }
+
+    .search-ui { background: #0d0f10; color: #f5f5f2; border-radius: 18px; min-height: 360px; padding: 28px; display: flex; flex-direction: column; justify-content: center; }
+    .search-mark { font: italic 30px Georgia, serif; margin-bottom: 32px; }
+    .search-box { height: 58px; border: 1px solid #3a3f42; border-radius: 14px; padding: 0 18px; display: flex; align-items: center; color: #ecece8; margin-bottom: 16px; }
+    .cursor { width: 2px; height: 20px; background: var(--accent); margin-left: 5px; animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .result { padding: 15px 4px; border-top: 1px solid #292d2f; }
+    .result:first-of-type { border-top: 0; }
+    .result b { display: block; font-size: 13px; margin-bottom: 5px; }
+    .result span { color: #8f9699; font-size: 12px; }
+
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; }
+    .about-copy { font: 500 clamp(30px, 3.8vw, 54px)/1.12 Georgia, serif; letter-spacing: -0.035em; margin: 0; }
+    .about-list { display: grid; gap: 0; align-self: start; }
+    .fact { padding: 18px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 130px 1fr; gap: 20px; }
+    .fact:last-child { border-bottom: 1px solid var(--line); }
+    .fact small { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+    .fact span { font-size: 14px; line-height: 1.5; }
+
+    .cta { padding: 110px 0 120px; border-bottom: 0; }
+    .cta-box { background: var(--ink); color: #fff; border-radius: 32px; padding: 58px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+    .cta h2 { margin: 0; font: 500 clamp(42px, 5vw, 72px)/.98 Georgia, serif; letter-spacing: -0.045em; max-width: 730px; }
+    .cta a { background: var(--accent); color: var(--accent-ink); text-decoration: none; padding: 16px 20px; border-radius: 999px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+    footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 12px; }
+    footer a { text-underline-offset: 4px; }
+
+    @media (max-width: 860px) {
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      nav { height: 70px; }
+      .nav-links a:not(.top-link) { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: 0; padding: 70px 0 56px; gap: 52px; }
+      .hero h1 { font-size: clamp(58px, 16vw, 88px); }
+      section { padding: 68px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 38px; }
+      .project { grid-template-columns: 1fr; gap: 34px; padding: 44px 0; }
+      .project h3 { font-size: 42px; }
+      .product-frame { min-height: auto; }
+      .wrongbook-ui { grid-template-columns: 1fr; height: auto; }
+      .phone { max-width: none; }
+      .flow { padding-top: 4px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cta-box { grid-template-columns: 1fr; padding: 38px 28px; }
+      .cta a { justify-self: start; }
+      footer { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav>
+      <a class="brand" href="#top">Jun-Yuan Shih</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a class="top-link" href="https://github.com/jamshih" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+    </nav>
+
+    <main id="top">
+      <header class="hero">
+        <h1>I build products for problems I <em>can’t ignore.</em></h1>
+        <div class="hero-side">
+          <p>I’m Jun-Yuan, a medical student in Taiwan and an independent software builder. I like taking messy, real-world problems and turning them into products people can actually use.</p>
+          <div class="hero-meta">
+            <span class="tag">iOS / Swift</span>
+            <span class="tag">AI systems</span>
+            <span class="tag">Product engineering</span>
+            <span class="tag">Kaohsiung, Taiwan</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="work">
+        <div class="section-head">
+          <div class="section-label">Selected work</div>
+          <h2 class="section-title">Two products that taught me far more than tutorial projects ever could.</h2>
+        </div>
+
+        <article class="project">
+          <div>
+            <div class="project-kicker">01 / WrongBook</div>
+            <h3>WrongBook</h3>
+            <p>An AI-native iOS study workflow for turning missed questions into structured review. Students scan a problem, extract the question and diagram, record why they missed it, and revisit it later instead of losing it in a photo album.</p>
+            <ul>
+              <li>Built the native iOS app, backend, AI scan pipeline, subscriptions, and account flows.</li>
+              <li>Worked on OCR + diagram extraction, structured math rendering, sync, reliability, and privacy boundaries.</li>
+              <li>Swift · Vision · Supabase · StoreKit · Edge Functions</li>
+            </ul>
+            <div class="project-links">
+              <span class="private">Private codebase</span>
+            </div>
+          </div>
+          <div class="product-frame" aria-label="WrongBook product flow illustration">
+            <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="wrongbook-ui">
+              <div class="phone">
+                <div class="phone-top"></div>
+                <div class="question">In △ABC, if ∠A = 42°, find the missing angle.</div>
+                <div class="sketch"></div>
+                <div class="scan-button">Scan problem</div>
+              </div>
+              <div class="flow">
+                <div class="flow-card"><strong>1. Capture</strong><span>Recognize text, notation, and the geometry of the question.</span></div>
+                <div class="arrow">↓</div>
+                <div class="flow-card"><strong>2. Understand the mistake</strong><span>Turn a wrong answer into a useful error card, not another forgotten screenshot.</span></div>
+                <div class="arrow">↓</div>
+                <div class="flow-card"><strong>3. Revisit</strong><span>Review and redo the questions that actually matter.</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div>
+            <div class="project-kicker">02 / SearchRecall</div>
+            <h3>SearchRecall</h3>
+            <p>A personal search engine for browser history. I built it because normal history search becomes nearly useless once you have years of browsing data and only remember what a page was about—not its exact title or URL.</p>
+            <ul>
+              <li>Designed around large Chrome History / Takeout imports, including 100k+ records.</li>
+              <li>Combined AI-assisted retrieval with local fallbacks so useful recall does not depend on one model call.</li>
+              <li>Web app · search / retrieval · cloud backend · AI</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://search-recall.com" target="_blank" rel="noreferrer">Visit SearchRecall ↗</a>
+              <span class="private">Private codebase</span>
+            </div>
+          </div>
+          <div class="product-frame" aria-label="SearchRecall product search illustration">
+            <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="search-ui">
+              <div class="search-mark">SearchRecall</div>
+              <div class="search-box">that article about vector databases I read last month<span class="cursor"></span></div>
+              <div class="result"><b>Understanding vector search in practice</b><span>Visited Sep 12 · technical article · database / retrieval</span></div>
+              <div class="result"><b>Notes on semantic retrieval systems</b><span>Visited Sep 08 · reference · embeddings / search</span></div>
+              <div class="result"><b>Building useful search over personal data</b><span>Visited Aug 29 · engineering blog · history / recall</span></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="about">
+        <div class="section-head">
+          <div class="section-label">About</div>
+          <h2 class="section-title">Medicine is what I study. Building is how I think.</h2>
+        </div>
+        <div class="about-grid">
+          <p class="about-copy">I’m currently studying medicine at Kaohsiung Medical University, while spending much of my free time on software, AI, and engineering. I’m drawn to problems where the interface looks simple but the system underneath is not.</p>
+          <div class="about-list">
+            <div class="fact"><small>Now</small><span>Medical student, Kaohsiung Medical University</span></div>
+            <div class="fact"><small>Built</small><span>WrongBook and SearchRecall as serious end-to-end product projects</span></div>
+            <div class="fact"><small>Science</small><span>Participated in iGEM 2024 and earlier independent research</span></div>
+            <div class="fact"><small>Before</small><span>Math & science gifted program, Mingdao High School</span></div>
+            <div class="fact"><small>Direction</small><span>Startups, software, AI, and products that bridge technical depth with real user problems</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="cta-box">
+          <h2>I care more about what I can build next than how many repos I can make public.</h2>
+          <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">See my GitHub ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Jun-Yuan Shih</span>
+      <span><a href="https://search-recall.com" target="_blank" rel="noreferrer">SearchRecall</a> · <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">GitHub</a></span>
+    </footer>
+  </div>
+</body>
+</html>
