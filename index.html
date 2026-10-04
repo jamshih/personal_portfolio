@@ -3,19 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Jun-Yuan Shih — builder of WrongBook and SearchRecall." />
-  <title>Jun-Yuan Shih — Builder</title>
+  <meta name="description" content="Jun-Yuan Shih — medical student and builder of WrongBook and SearchRecall." />
+  <title>Jun-Yuan Shih</title>
   <style>
     :root {
-      --bg: #faf6f4;
-      --ink: #171513;
-      --muted: #6f6964;
-      --line: #d9d0cb;
-      --paper: #fffdfb;
-      --accent: #d9ff57;
-      --accent-ink: #1b2100;
+      --bg: #f7f3ee;
+      --paper: #fbf9f6;
+      --ink: #181715;
+      --muted: #716b64;
+      --line: #d7cec4;
+      --accent: #243d82;
       --max: 1180px;
-      --radius: 26px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -28,150 +26,212 @@
     }
     a { color: inherit; }
     .shell { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+    .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+
     nav {
-      height: 82px;
+      height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--line);
+      font-size: 14px;
     }
-    .brand { font-size: 15px; font-weight: 750; letter-spacing: -0.01em; text-decoration: none; }
-    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+    .brand { text-decoration: none; font-weight: 700; }
+    .nav-links { display: flex; gap: 26px; }
     .nav-links a { text-decoration: none; color: var(--muted); }
     .nav-links a:hover { color: var(--ink); }
-    .top-link { color: var(--ink) !important; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
 
     .hero {
-      min-height: 690px;
       display: grid;
       grid-template-columns: 1.25fr .75fr;
-      gap: 64px;
-      align-items: end;
-      padding: 90px 0 78px;
+      gap: 84px;
+      padding: 104px 0 92px;
       border-bottom: 1px solid var(--line);
+      align-items: end;
     }
     .hero h1 {
       margin: 0;
-      max-width: 840px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 500;
-      font-size: clamp(58px, 7.4vw, 108px);
-      line-height: .93;
+      max-width: 780px;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-size: clamp(62px, 7vw, 104px);
+      line-height: .94;
       letter-spacing: -0.055em;
+      font-weight: 500;
     }
-    .hero h1 em { font-style: italic; font-weight: 400; }
-    .hero-side { padding-bottom: 8px; }
-    .hero-side p {
-      margin: 0 0 30px;
-      max-width: 440px;
-      font-size: 19px;
+    .hero h1 span { color: var(--accent); }
+    .intro {
+      font-size: 20px;
       line-height: 1.55;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.018em;
+      margin: 0 0 34px;
+      max-width: 470px;
     }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 36px;
-      padding: 0 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: 12px;
-      color: var(--muted);
-      background: rgba(255,255,255,.34);
+    .now-list { border-top: 1px solid var(--line); }
+    .now-row {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.45;
     }
+    .now-row b { font-weight: 500; color: var(--muted); }
 
-    section { padding: 92px 0; border-bottom: 1px solid var(--line); }
+    section { padding: 90px 0; border-bottom: 1px solid var(--line); }
     .section-head {
       display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 40px;
-      margin-bottom: 54px;
+      grid-template-columns: 180px 1fr;
+      gap: 46px;
+      margin-bottom: 58px;
       align-items: start;
     }
-    .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
-    .section-title { margin: 0; font: 500 clamp(34px, 4.5vw, 62px)/1.04 Georgia, serif; letter-spacing: -0.04em; max-width: 820px; }
-
-    .project { display: grid; grid-template-columns: .95fr 1.05fr; gap: 58px; padding: 54px 0; border-top: 1px solid var(--line); align-items: center; }
-    .project:first-of-type { border-top: 0; padding-top: 0; }
-    .project-kicker { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
-    .project h3 { margin: 0 0 16px; font: 500 48px/1 Georgia, serif; letter-spacing: -0.04em; }
-    .project p { margin: 0 0 24px; font-size: 17px; line-height: 1.62; color: #393532; max-width: 560px; }
-    .project ul { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; color: var(--muted); font-size: 14px; }
-    .project li::before { content: "↳"; color: var(--ink); margin-right: 10px; }
-    .project-links { display: flex; gap: 20px; font-size: 14px; }
-    .project-links a { text-underline-offset: 5px; }
-    .private { text-decoration: none; color: var(--muted); cursor: default; }
-
-    .product-frame {
-      min-height: 430px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 24px 80px rgba(31,22,17,.06);
-      overflow: hidden;
-      position: relative;
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      color: var(--muted);
+      padding-top: 8px;
     }
-    .window-bar { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 3px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: #c9c0bb; }
-    .wrongbook-ui { background: #f3eedf; border-radius: 18px; height: 360px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 14px; padding: 16px; }
-    .phone { background: #fff; border: 1px solid #d8d0c7; border-radius: 24px; padding: 12px; max-width: 225px; width: 100%; justify-self: center; box-shadow: 0 12px 30px rgba(54,43,34,.08); }
-    .phone-top { width: 52px; height: 6px; border-radius: 8px; background: #202020; margin: 0 auto 14px; }
-    .question { font-family: Georgia, serif; font-size: 16px; line-height: 1.35; padding: 8px 3px 22px; }
-    .sketch { height: 96px; border: 1px solid #ddd5ce; border-radius: 10px; position: relative; margin: 8px 0 16px; background: linear-gradient(#fff,#fbfaf9); }
-    .sketch:before { content: ""; position: absolute; left: 30px; top: 56px; width: 110px; height: 1px; background: #292929; transform: rotate(-21deg); transform-origin: left; }
-    .sketch:after { content: "42°"; position: absolute; left: 72px; top: 37px; font: 12px Georgia, serif; }
-    .scan-button { background: var(--ink); color: #fff; border-radius: 10px; padding: 11px; text-align: center; font-size: 12px; }
-    .flow { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-    .flow-card { border: 1px solid #dad2cc; background: rgba(255,255,255,.8); border-radius: 15px; padding: 15px 16px; }
-    .flow-card strong { font-size: 13px; display: block; margin-bottom: 5px; }
-    .flow-card span { font-size: 12px; color: var(--muted); line-height: 1.45; display: block; }
-    .arrow { color: #9f9690; text-align: center; font-size: 12px; }
+    .section-head h2 {
+      margin: 0;
+      max-width: 820px;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(34px, 4.4vw, 58px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
 
-    .search-ui { background: #0d0f10; color: #f5f5f2; border-radius: 18px; min-height: 360px; padding: 28px; display: flex; flex-direction: column; justify-content: center; }
-    .search-mark { font: italic 30px Georgia, serif; margin-bottom: 32px; }
-    .search-box { height: 58px; border: 1px solid #3a3f42; border-radius: 14px; padding: 0 18px; display: flex; align-items: center; color: #ecece8; margin-bottom: 16px; }
-    .cursor { width: 2px; height: 20px; background: var(--accent); margin-left: 5px; animation: blink 1.1s steps(1) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-    .result { padding: 15px 4px; border-top: 1px solid #292d2f; }
-    .result:first-of-type { border-top: 0; }
-    .result b { display: block; font-size: 13px; margin-bottom: 5px; }
-    .result span { color: #8f9699; font-size: 12px; }
+    .project {
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 70px;
+      padding: 62px 0;
+      border-top: 1px solid var(--line);
+      align-items: start;
+    }
+    .project:first-of-type { padding-top: 0; border-top: 0; }
+    .project-num { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+    .project h3 {
+      margin: 0 0 18px;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-size: 50px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+    }
+    .project .lede {
+      margin: 0 0 26px;
+      font-size: 18px;
+      line-height: 1.62;
+      color: #383430;
+    }
+    .detail-list { border-top: 1px solid var(--line); margin-top: 30px; }
+    .detail-row {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .detail-row dt { color: var(--muted); margin: 0; }
+    .detail-row dd { margin: 0; }
+    .text-link { display: inline-block; margin-top: 24px; font-size: 14px; text-underline-offset: 5px; }
+    .private-note { margin-top: 13px; color: var(--muted); font-size: 12px; line-height: 1.5; }
 
-    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; }
-    .about-copy { font: 500 clamp(30px, 3.8vw, 54px)/1.12 Georgia, serif; letter-spacing: -0.035em; margin: 0; }
-    .about-list { display: grid; gap: 0; align-self: start; }
-    .fact { padding: 18px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 130px 1fr; gap: 20px; }
-    .fact:last-child { border-bottom: 1px solid var(--line); }
-    .fact small { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
-    .fact span { font-size: 14px; line-height: 1.5; }
+    .process {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      min-height: 420px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .diagram-title { margin-bottom: 24px; font-size: 12px; color: var(--muted); }
+    .memory-chain { display: grid; gap: 0; }
+    .memory-node {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+    .memory-node:last-child { border-bottom: 1px solid var(--line); }
+    .node-n {
+      width: 30px; height: 30px; border: 1px solid var(--ink); border-radius: 50%;
+      display: grid; place-items: center; font-size: 11px;
+    }
+    .memory-node strong { display: block; font-family: "Iowan Old Style", Georgia, serif; font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+    .memory-node span { display: block; color: var(--muted); font-size: 13px; line-height: 1.45; }
 
-    .cta { padding: 110px 0 120px; border-bottom: 0; }
-    .cta-box { background: var(--ink); color: #fff; border-radius: 32px; padding: 58px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
-    .cta h2 { margin: 0; font: 500 clamp(42px, 5vw, 72px)/.98 Georgia, serif; letter-spacing: -0.045em; max-width: 730px; }
-    .cta a { background: var(--accent); color: var(--accent-ink); text-decoration: none; padding: 16px 20px; border-radius: 999px; font-size: 14px; font-weight: 700; white-space: nowrap; }
-    footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 12px; }
-    footer a { text-underline-offset: 4px; }
+    .recall-flow { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; align-items: stretch; }
+    .flow-step { border: 1px solid var(--line); padding: 22px; min-height: 170px; display: flex; flex-direction: column; justify-content: space-between; }
+    .flow-step small { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+    .flow-step strong { font-family: "Iowan Old Style", Georgia, serif; font-size: 23px; font-weight: 500; line-height: 1.08; }
+    .flow-arrow { display: grid; place-items: center; color: var(--muted); font-size: 18px; }
+    .flow-caption { margin-top: 22px; font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    .background-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+    .bio {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-size: clamp(30px, 3.7vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.032em;
+    }
+    .timeline { border-top: 1px solid var(--line); }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline-row time { color: var(--muted); font-size: 12px; }
+    .timeline-row strong { display: block; font-size: 14px; margin-bottom: 4px; }
+    .timeline-row span { color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    .github-note {
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      gap: 46px;
+      align-items: center;
+      padding: 58px 0;
+    }
+    .github-note p { margin: 0; max-width: 700px; font-size: 17px; line-height: 1.55; }
+    .github-note a { font-size: 14px; text-underline-offset: 5px; white-space: nowrap; }
+
+    footer {
+      min-height: 98px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
 
     @media (max-width: 860px) {
       .shell { width: min(calc(100% - 28px), var(--max)); }
-      nav { height: 70px; }
-      .nav-links a:not(.top-link) { display: none; }
-      .hero { grid-template-columns: 1fr; min-height: 0; padding: 70px 0 56px; gap: 52px; }
-      .hero h1 { font-size: clamp(58px, 16vw, 88px); }
-      section { padding: 68px 0; }
-      .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 38px; }
-      .project { grid-template-columns: 1fr; gap: 34px; padding: 44px 0; }
+      nav { height: 68px; }
+      .nav-links a:first-child { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 48px; padding: 70px 0 58px; }
+      .hero h1 { font-size: clamp(58px, 15vw, 86px); }
+      section { padding: 66px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 14px; margin-bottom: 40px; }
+      .project { grid-template-columns: 1fr; gap: 36px; padding: 48px 0; }
       .project h3 { font-size: 42px; }
-      .product-frame { min-height: auto; }
-      .wrongbook-ui { grid-template-columns: 1fr; height: auto; }
-      .phone { max-width: none; }
-      .flow { padding-top: 4px; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .cta-box { grid-template-columns: 1fr; padding: 38px 28px; }
-      .cta a { justify-self: start; }
-      footer { gap: 20px; }
+      .process { min-height: auto; padding: 20px; }
+      .recall-flow { grid-template-columns: 1fr; }
+      .flow-arrow { min-height: 42px; transform: rotate(90deg); }
+      .background-grid { grid-template-columns: 1fr; gap: 46px; }
+      .github-note { grid-template-columns: 1fr; gap: 14px; }
+      footer { gap: 18px; }
     }
   </style>
 </head>
@@ -181,121 +241,107 @@
       <a class="brand" href="#top">Jun-Yuan Shih</a>
       <div class="nav-links">
         <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a class="top-link" href="https://github.com/jamshih" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="#background">Background</a>
+        <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </nav>
 
     <main id="top">
       <header class="hero">
-        <h1>I build products for problems I <em>can’t ignore.</em></h1>
-        <div class="hero-side">
-          <p>I’m Jun-Yuan, a medical student in Taiwan and an independent software builder. I like taking messy, real-world problems and turning them into products people can actually use.</p>
-          <div class="hero-meta">
-            <span class="tag">iOS / Swift</span>
-            <span class="tag">AI systems</span>
-            <span class="tag">Product engineering</span>
-            <span class="tag">Kaohsiung, Taiwan</span>
+        <h1>I study medicine.<br><span>I build software.</span></h1>
+        <div>
+          <p class="intro">I’m Jun-Yuan Shih, a first-year medical student at Kaohsiung Medical University. Outside class, I build products end to end. Right now, most of that work is WrongBook and SearchRecall.</p>
+          <div class="now-list">
+            <div class="now-row"><b>Based in</b><span>Kaohsiung, Taiwan</span></div>
+            <div class="now-row"><b>Studying</b><span>Medicine at Kaohsiung Medical University</span></div>
+            <div class="now-row"><b>Building</b><span>WrongBook · SearchRecall</span></div>
           </div>
         </div>
       </header>
 
       <section id="work">
         <div class="section-head">
-          <div class="section-label">Selected work</div>
-          <h2 class="section-title">Two products that taught me far more than tutorial projects ever could.</h2>
+          <div class="section-label">Current work</div>
+          <h2>WrongBook and SearchRecall are where most of my engineering time goes.</h2>
         </div>
 
         <article class="project">
           <div>
-            <div class="project-kicker">01 / WrongBook</div>
+            <div class="project-num mono">01 / WRONGBOOK</div>
             <h3>WrongBook</h3>
-            <p>An AI-native iOS study workflow for turning missed questions into structured review. Students scan a problem, extract the question and diagram, record why they missed it, and revisit it later instead of losing it in a photo album.</p>
-            <ul>
-              <li>Built the native iOS app, backend, AI scan pipeline, subscriptions, and account flows.</li>
-              <li>Worked on OCR + diagram extraction, structured math rendering, sync, reliability, and privacy boundaries.</li>
-              <li>Swift · Vision · Supabase · StoreKit · Edge Functions</li>
-            </ul>
-            <div class="project-links">
-              <span class="private">Private codebase</span>
-            </div>
+            <p class="lede">A native iOS app for a familiar study failure: you photograph a question you got wrong, then never look at the photo again. WrongBook keeps the question, the mistake, the correction, and later attempts together.</p>
+            <dl class="detail-list">
+              <div class="detail-row"><dt>What I built</dt><dd>Swift app, Supabase backend, AI scan pipeline, subscriptions, account flows</dd></div>
+              <div class="detail-row"><dt>Hard parts</dt><dd>OCR + math notation, diagram extraction, account isolation, sync, production reliability</dd></div>
+              <div class="detail-row"><dt>Stack</dt><dd>Swift · Vision · Supabase · StoreKit · Edge Functions</dd></div>
+            </dl>
+            <div class="private-note">Private codebase. I keep the app source private while I work toward the public release.</div>
           </div>
-          <div class="product-frame" aria-label="WrongBook product flow illustration">
-            <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <div class="wrongbook-ui">
-              <div class="phone">
-                <div class="phone-top"></div>
-                <div class="question">In △ABC, if ∠A = 42°, find the missing angle.</div>
-                <div class="sketch"></div>
-                <div class="scan-button">Scan problem</div>
-              </div>
-              <div class="flow">
-                <div class="flow-card"><strong>1. Capture</strong><span>Recognize text, notation, and the geometry of the question.</span></div>
-                <div class="arrow">↓</div>
-                <div class="flow-card"><strong>2. Understand the mistake</strong><span>Turn a wrong answer into a useful error card, not another forgotten screenshot.</span></div>
-                <div class="arrow">↓</div>
-                <div class="flow-card"><strong>3. Revisit</strong><span>Review and redo the questions that actually matter.</span></div>
-              </div>
+
+          <div class="process" aria-label="WrongBook learning object diagram">
+            <div class="diagram-title mono">ONE MISTAKE, KEPT AS ONE MEMORY</div>
+            <div class="memory-chain">
+              <div class="memory-node"><div class="node-n">1</div><div><strong>Original question</strong><span>The source problem, including notation and diagram.</span></div></div>
+              <div class="memory-node"><div class="node-n">2</div><div><strong>Why it went wrong</strong><span>The student’s reasoning, wrong answer, and the actual failure mode.</span></div></div>
+              <div class="memory-node"><div class="node-n">3</div><div><strong>Correction</strong><span>The concept and corrected solution stay attached to the mistake.</span></div></div>
+              <div class="memory-node"><div class="node-n">4</div><div><strong>Retry later</strong><span>Future attempts become part of the same learning history.</span></div></div>
             </div>
           </div>
         </article>
 
         <article class="project">
           <div>
-            <div class="project-kicker">02 / SearchRecall</div>
+            <div class="project-num mono">02 / SEARCHRECALL</div>
             <h3>SearchRecall</h3>
-            <p>A personal search engine for browser history. I built it because normal history search becomes nearly useless once you have years of browsing data and only remember what a page was about—not its exact title or URL.</p>
-            <ul>
-              <li>Designed around large Chrome History / Takeout imports, including 100k+ records.</li>
-              <li>Combined AI-assisted retrieval with local fallbacks so useful recall does not depend on one model call.</li>
-              <li>Web app · search / retrieval · cloud backend · AI</li>
-            </ul>
-            <div class="project-links">
-              <a href="https://search-recall.com" target="_blank" rel="noreferrer">Visit SearchRecall ↗</a>
-              <span class="private">Private codebase</span>
-            </div>
+            <p class="lede">An English-learning web app that turns selected Chrome searches and dictionary lookups into vocabulary cards and review practice. The point is not to archive everything you browsed; it is to reuse the English you already encountered.</p>
+            <dl class="detail-list">
+              <div class="detail-row"><dt>What I built</dt><dd>Web app, Chrome Helper, import flow, search/history processing, cloud backend</dd></div>
+              <div class="detail-row"><dt>Privacy model</dt><dd>A user-started scan reads history locally, filters supported learning records, then sends only those records to SearchRecall.</dd></div>
+              <div class="detail-row"><dt>Scale tested</dt><dd>Chrome History / Takeout imports with 100k+ records</dd></div>
+            </dl>
+            <a class="text-link" href="https://search-recall.com" target="_blank" rel="noreferrer">Open search-recall.com ↗</a>
+            <div class="private-note">Private codebase. The live product is public.</div>
           </div>
-          <div class="product-frame" aria-label="SearchRecall product search illustration">
-            <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <div class="search-ui">
-              <div class="search-mark">SearchRecall</div>
-              <div class="search-box">that article about vector databases I read last month<span class="cursor"></span></div>
-              <div class="result"><b>Understanding vector search in practice</b><span>Visited Sep 12 · technical article · database / retrieval</span></div>
-              <div class="result"><b>Notes on semantic retrieval systems</b><span>Visited Sep 08 · reference · embeddings / search</span></div>
-              <div class="result"><b>Building useful search over personal data</b><span>Visited Aug 29 · engineering blog · history / recall</span></div>
+
+          <div class="process" aria-label="SearchRecall learning flow diagram">
+            <div class="diagram-title mono">FROM A SEARCH TO SOMETHING YOU CAN REVIEW</div>
+            <div class="recall-flow">
+              <div class="flow-step"><small>01 · notice</small><strong>Google search or dictionary lookup</strong></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step"><small>02 · keep</small><strong>Useful English becomes a learning record</strong></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step"><small>03 · review</small><strong>Vocabulary card and later practice</strong></div>
             </div>
+            <div class="flow-caption">The Chrome Helper only runs after the user starts a scan. Filtering happens locally before supported learning records are sent.</div>
           </div>
         </article>
       </section>
 
-      <section id="about">
+      <section id="background">
         <div class="section-head">
-          <div class="section-label">About</div>
-          <h2 class="section-title">Medicine is what I study. Building is how I think.</h2>
+          <div class="section-label">Background</div>
+          <h2>Medicine is the degree. Software is the work I keep coming back to.</h2>
         </div>
-        <div class="about-grid">
-          <p class="about-copy">I’m currently studying medicine at Kaohsiung Medical University, while spending much of my free time on software, AI, and engineering. I’m drawn to problems where the interface looks simple but the system underneath is not.</p>
-          <div class="about-list">
-            <div class="fact"><small>Now</small><span>Medical student, Kaohsiung Medical University</span></div>
-            <div class="fact"><small>Built</small><span>WrongBook and SearchRecall as serious end-to-end product projects</span></div>
-            <div class="fact"><small>Science</small><span>Participated in iGEM 2024 and earlier independent research</span></div>
-            <div class="fact"><small>Before</small><span>Math & science gifted program, Mingdao High School</span></div>
-            <div class="fact"><small>Direction</small><span>Startups, software, AI, and products that bridge technical depth with real user problems</span></div>
+        <div class="background-grid">
+          <p class="bio">I came from a math-and-science track, did research and iGEM in high school, and started medicine in 2026. I still spend a large part of my free time designing, coding, debugging, and shipping software.</p>
+          <div class="timeline">
+            <div class="timeline-row"><time>2026—</time><div><strong>Kaohsiung Medical University</strong><span>Medicine</span></div></div>
+            <div class="timeline-row"><time>2024</time><div><strong>iGEM</strong><span>Participated in a synthetic-biology team project.</span></div></div>
+            <div class="timeline-row"><time>High school</time><div><strong>Mingdao High School</strong><span>Math & science gifted program; independent research (G10 paper rated A); 3D printing club.</span></div></div>
           </div>
         </div>
       </section>
 
-      <section class="cta">
-        <div class="cta-box">
-          <h2>I care more about what I can build next than how many repos I can make public.</h2>
-          <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">See my GitHub ↗</a>
-        </div>
-      </section>
+      <aside class="github-note">
+        <div class="section-label">About my GitHub</div>
+        <p>Most of my serious product work lives in private repositories, so the public contribution graph undercounts it. The project pages above are a better summary of what I actually build.</p>
+        <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">github.com/jamshih ↗</a>
+      </aside>
     </main>
 
     <footer>
       <span>© 2026 Jun-Yuan Shih</span>
-      <span><a href="https://search-recall.com" target="_blank" rel="noreferrer">SearchRecall</a> · <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">GitHub</a></span>
+      <span>Kaohsiung, Taiwan</span>
     </footer>
   </div>
 </body>
