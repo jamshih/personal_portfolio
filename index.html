@@ -74,7 +74,9 @@
     .appshots-head p{margin:0;max-width:430px;color:var(--muted);font-size:13px;line-height:1.5;text-align:right}
     .appshots-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     .appshot{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
-    .appshot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+    .appshot img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
+    .appshot a{display:block}
+    .appshot a:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
     .appshot figcaption{padding:10px 12px 12px;color:var(--muted);font-size:11px;line-height:1.45;border-top:1px solid var(--line)}
 
     .notebook{background:var(--paper-2);border:1px solid var(--line);padding:26px 28px 28px;box-shadow:6px 7px 0 rgba(44,38,31,.035);position:relative}
@@ -190,25 +192,33 @@
 
           <div class="appshots" aria-label="WrongBook app screenshots">
             <div class="appshots-head">
-              <small>REAL APP SCREENS / IPAD</small>
-              <p>The product itself is probably the best explanation of what I mean by caring about the details.</p>
+              <small>OFFICIAL APP STORE SCREENS / IPAD</small>
+              <p>High-resolution images from the App Store. Select any screenshot to view it in full size.</p>
             </div>
             <div class="appshots-grid">
               <figure class="appshot">
-                <img src="assets/wrongbook-home.webp" alt="WrongBook home screen showing today's review, upcoming tasks, and recent wrong questions." loading="lazy">
-                <figcaption>Home — today’s review, planner state, and recent mistakes.</figcaption>
+                <a href="assets/wrongbook-today.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Today — plan reviews and follow your progress.">
+                  <img src="assets/wrongbook-today.webp" width="2048" height="1536" alt="WrongBook Today screen showcasing the daily learning dashboard and upcoming reviews." loading="lazy" decoding="async">
+                </a>
+                <figcaption>Today — plan reviews and follow your progress.</figcaption>
               </figure>
               <figure class="appshot">
-                <img src="assets/wrongbook-quick-review.webp" alt="WrongBook quick review screen with remember and not familiar actions." loading="lazy">
-                <figcaption>Quick review — mark whether a mistake is actually remembered.</figcaption>
+                <a href="assets/wrongbook-capture.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Capture — turn a question photo into a mistake to revisit.">
+                  <img src="assets/wrongbook-capture.webp" width="2048" height="1536" alt="WrongBook capture screen demonstrating how to add a question from photos or the camera." loading="lazy" decoding="async">
+                </a>
+                <figcaption>Capture — turn a question photo into a mistake to revisit.</figcaption>
               </figure>
               <figure class="appshot">
-                <img src="assets/wrongbook-redo.webp" alt="WrongBook redo original question screen with built-in scratch paper." loading="lazy">
-                <figcaption>Redo the original question — solve it again with built-in scratch paper.</figcaption>
+                <a href="assets/wrongbook-learning-map.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Learning map — organize mistakes by subject and chapter.">
+                  <img src="assets/wrongbook-learning-map.webp" width="2048" height="1536" alt="WrongBook learning map showing subjects, chapters, review tools, and Recall Notebook." loading="lazy" decoding="async">
+                </a>
+                <figcaption>Learning map — organize mistakes by subject and chapter.</figcaption>
               </figure>
               <figure class="appshot">
-                <img src="assets/wrongbook-subject-map.webp" alt="WrongBook subject map screen showing chapters, mistakes, export, and recall tools." loading="lazy">
-                <figcaption>Subject map — chapters, mistakes, export, quick review, and Recall Notebook.</figcaption>
+                <a href="assets/wrongbook-redo-ai-tutor.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Redo and AI Tutor — work through mistakes and understand why.">
+                  <img src="assets/wrongbook-redo-ai-tutor.webp" width="2048" height="1536" alt="WrongBook question rework screen showing handwritten scratch space and the AI Tutor." loading="lazy" decoding="async">
+                </a>
+                <figcaption>Redo and AI Tutor — work through mistakes and understand why.</figcaption>
               </figure>
             </div>
           </div>
