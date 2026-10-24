@@ -1,310 +1,260 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Jun-Yuan Shih — medical student and independent builder. I shipped WrongBook, now available on the App Store, and built SearchRecall." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Jun-Yuan Shih — Field Notes" />
-  <meta property="og:description" content="Building and shipping software from everyday problems. WrongBook is now on the App Store." />
-  <title>Jun-Yuan Shih — Field Notes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jun-Yuan Shih. I like building things. Here are a few I've made.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jun-Yuan Shih">
+  <meta property="og:description" content="I like building things.">
+  <title>Jun-Yuan Shih</title>
   <style>
     :root {
-      --paper:#f5f0e8;
-      --paper-2:#fbf8f2;
-      --ink:#191816;
-      --muted:#6f685f;
-      --line:#cec4b8;
-      --blue:#24458c;
-      --red:#b84b42;
-      --yellow:#efe0a3;
-      --max:1160px;
+      --paper: #f5f0e8;
+      --soft: #fbf8f2;
+      --ink: #191816;
+      --muted: #655f57;
+      --line: #d1c7bc;
+      --blue: #24458c;
+      --max: 1120px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    .shell{width:min(calc(100% - 40px),var(--max));margin:0 auto}
-    .serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
-    .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
-
-    nav{height:74px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:13px}
-    .brand{text-decoration:none;font-weight:750;letter-spacing:-.01em}
-    .nav{display:flex;gap:24px}
-    .nav a{text-decoration:none;color:var(--muted)}
-    .nav a:hover{color:var(--ink)}
-
-    .hero{padding:92px 0 72px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.15fr .85fr;gap:76px;align-items:end}
-    .hero h1{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(64px,7.2vw,108px);line-height:.92;font-weight:500;letter-spacing:-.055em;max-width:760px}
-    .hero h1 em{color:var(--blue);font-style:normal}
-    .hero p{margin:0 0 28px;font-size:20px;line-height:1.55;letter-spacing:-.018em;max-width:480px}
-    .quick{border-top:1px solid var(--line)}
-    .quick-row{display:grid;grid-template-columns:102px 1fr;gap:18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.45}
-    .quick-row b{font-weight:500;color:var(--muted)}
-
-    .margin-note{position:relative;margin:26px 0 0 26px;padding:14px 16px 14px 18px;max-width:420px;background:var(--paper-2);border-left:3px solid var(--red);font:15px/1.45 "Iowan Old Style",Georgia,serif;transform:rotate(-.5deg)}
-    .margin-note:before{content:"field note";position:absolute;left:-28px;top:-18px;color:var(--red);font:10px/1 "SFMono-Regular",Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-5deg)}
-
-    section{padding:84px 0;border-bottom:1px solid var(--line)}
-    .section-head{display:grid;grid-template-columns:170px 1fr;gap:46px;margin-bottom:46px}
-    .section-label{font:10px/1.3 "SFMono-Regular",Consolas,monospace;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);padding-top:9px}
-    .section-head h2{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:500;font-size:clamp(34px,4.1vw,56px);line-height:1.07;letter-spacing:-.04em;max-width:850px}
-
-    .project{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;padding:58px 0;border-top:1px solid var(--line);align-items:start}
-    .project:first-of-type{border-top:0;padding-top:0}
-    .project-code{font:10px/1.3 "SFMono-Regular",Consolas,monospace;color:var(--muted);letter-spacing:.08em;margin-bottom:13px}
-    .project h3{margin:0 0 16px;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:50px;line-height:1;font-weight:500;letter-spacing:-.045em}
-    .project .origin{font-size:18px;line-height:1.62;color:#36322f;margin:0 0 24px}
-    .facts{margin:28px 0 0;border-top:1px solid var(--line)}
-    .fact{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.5}
-    .fact dt{color:var(--muted);margin:0}
-    .fact dd{margin:0}
-    .text-link{display:inline-block;margin-top:21px;font-size:13px;text-underline-offset:5px}
-    .private{margin-top:11px;color:var(--muted);font-size:12px;line-height:1.5}
-    .launch-status{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:0 0 25px}
-    .launch-kicker{font:10px/1.4 "SFMono-Regular",Consolas,monospace;letter-spacing:.09em;color:var(--blue);text-transform:uppercase}
-    .launch-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 16px;border:1px solid var(--ink);background:var(--ink);color:var(--paper-2);font-size:13px;line-height:1.4;font-weight:650;text-decoration:none;transition:background .18s,border-color .18s}
-    .launch-cta:hover{background:var(--blue);border-color:var(--blue)}
-    .launch-cta:focus-visible,.quick a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-    .quick a{text-decoration-thickness:1px;text-underline-offset:3px}
-
-    .appshots{grid-column:1/-1;margin-top:8px;padding:24px;background:var(--paper-2);border:1px solid var(--line);box-shadow:6px 7px 0 rgba(44,38,31,.035)}
-    .appshots-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
-    .appshots-head small{font:10px/1.3 "SFMono-Regular",Consolas,monospace;color:var(--muted);letter-spacing:.1em}
-    .appshots-head p{margin:0;max-width:430px;color:var(--muted);font-size:13px;line-height:1.5;text-align:right}
-    .appshots-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .appshot{margin:0;border:1px solid var(--line);background:#fff;overflow:hidden}
-    .appshot img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
-    .appshot a{display:block}
-    .appshot a:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
-    .appshot figcaption{padding:10px 12px 12px;color:var(--muted);font-size:11px;line-height:1.45;border-top:1px solid var(--line)}
-
-    .notebook{background:var(--paper-2);border:1px solid var(--line);padding:26px 28px 28px;box-shadow:6px 7px 0 rgba(44,38,31,.035);position:relative}
-    .notebook:before{content:"";position:absolute;left:52px;top:0;bottom:0;width:1px;background:rgba(184,75,66,.22)}
-    .notebook-title{font:10px/1.3 "SFMono-Regular",Consolas,monospace;color:var(--muted);letter-spacing:.1em;margin:0 0 22px 48px}
-    .note-line{position:relative;margin-left:48px;padding:15px 0;border-top:1px solid rgba(206,196,184,.72)}
-    .note-line:last-child{border-bottom:1px solid rgba(206,196,184,.72)}
-    .note-line strong{display:block;font:500 22px/1.12 "Iowan Old Style",Georgia,serif;margin-bottom:6px}
-    .note-line p{margin:0;color:var(--muted);font-size:13px;line-height:1.52}
-    .scribble{display:inline-block;color:var(--red);font-family:"Bradley Hand","Segoe Print",cursive;font-size:16px;transform:rotate(-1.5deg);margin-top:8px}
-
-    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .field-card{padding:24px 24px 26px;border:1px solid var(--line);background:rgba(251,248,242,.55);min-height:220px}
-    .field-card small{display:block;font:10px/1.3 "SFMono-Regular",Consolas,monospace;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px}
-    .field-card p{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:27px;line-height:1.18;letter-spacing:-.025em}
-    .field-card .detail{margin-top:18px;font:13px/1.55 Inter,ui-sans-serif,sans-serif;color:var(--muted)}
-
-    .process-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
-    .process-copy{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(30px,3.7vw,48px);line-height:1.16;letter-spacing:-.035em;margin:0}
-    .process-list{border-top:1px solid var(--line)}
-    .process-row{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
-    .process-row span{font:10px/1.3 "SFMono-Regular",Consolas,monospace;color:var(--muted);padding-top:3px}
-    .process-row strong{display:block;font-size:14px;margin-bottom:5px}
-    .process-row p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
-
-    .bio-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px}
-    .bio-copy{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(30px,3.8vw,50px);line-height:1.14;letter-spacing:-.035em;margin:0}
-    .bio-list{border-top:1px solid var(--line)}
-    .bio-row{display:grid;grid-template-columns:100px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.5}
-    .bio-row b{font-weight:500;color:var(--muted)}
-
-    .github{padding:55px 0;display:grid;grid-template-columns:170px 1fr auto;gap:46px;align-items:center}
-    .github p{margin:0;font-size:16px;line-height:1.55;max-width:690px}
-    .github a{font-size:13px;text-underline-offset:5px;white-space:nowrap}
-
-    footer{min-height:90px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
-
-    @media(max-width:860px){
-      .shell{width:min(calc(100% - 28px),var(--max))}
-      nav{height:66px}.nav a:first-child{display:none}
-      .hero{grid-template-columns:1fr;gap:48px;padding:66px 0 54px}.hero h1{font-size:clamp(58px,15vw,86px)}
-      section{padding:64px 0}.section-head{grid-template-columns:1fr;gap:12px;margin-bottom:38px}
-      .project{grid-template-columns:1fr;gap:34px;padding:46px 0}.project h3{font-size:42px}
-      .field-grid,.process-grid,.bio-grid{grid-template-columns:1fr}
-      .appshots-head{display:block}.appshots-head p{text-align:left;margin-top:8px}.appshots-grid{grid-template-columns:1fr}.appshots{padding:18px}
-      .process-grid,.bio-grid{gap:42px}
-      .github{grid-template-columns:1fr;gap:14px}
-      .margin-note{margin-left:14px}.notebook{padding:22px 18px}.notebook:before{left:36px}.notebook-title,.note-line{margin-left:34px}
-      footer{gap:18px}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-    @media(prefers-reduced-motion:reduce){.launch-cta{transition:none}}
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+    img { display: block; width: 100%; height: auto; }
+    .shell { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+    .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: -.015em; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 28px; font-size: 14px; }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 72px;
+      align-items: end;
+      padding: clamp(82px, 12vw, 158px) 0 clamp(86px, 10vw, 130px);
+    }
+    h1 {
+      margin: 0;
+      font: 500 clamp(64px, 8vw, 112px)/.92 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      letter-spacing: -.065em;
+    }
+    h1 em { font-style: normal; color: var(--blue); }
+    .hello { padding-bottom: 7px; }
+    .hello p {
+      margin: 0 0 18px;
+      font-size: clamp(17px, 1.8vw, 21px);
+      line-height: 1.56;
+      letter-spacing: -.012em;
+    }
+    .hello p:last-child { margin: 0; }
+    .hello a { font-size: 14px; }
+    .divider { height: 1px; background: var(--line); }
+
+    .section { padding: 78px 0 88px; }
+    h2 {
+      margin: 0 0 28px;
+      font: 500 clamp(36px, 4vw, 52px)/1.08 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      letter-spacing: -.045em;
+    }
+    .project {
+      border-top: 1px solid var(--line);
+      padding: 54px 0 64px;
+    }
+    .project-intro {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 70px;
+      align-items: start;
+      margin-bottom: 38px;
+    }
+    .project h3 {
+      margin: 0;
+      font: 500 clamp(38px, 4.3vw, 56px)/1.05 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      letter-spacing: -.045em;
+    }
+    .project-copy p {
+      max-width: 670px;
+      margin: 0 0 22px;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+    .project-links { display: flex; flex-wrap: wrap; gap: 12px 27px; font-size: 14px; }
+    .project-links a:hover, .small-link:hover { color: var(--blue); }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    figure {
+      min-width: 0;
+      margin: 0;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+    figure a { display: block; overflow: hidden; background: #fff; }
+    figure img { aspect-ratio: 4 / 3; object-fit: contain; }
+    figcaption { padding: 12px 5px 3px; color: var(--muted); font-size: 13px; }
+    .project--simple { padding-bottom: 28px; }
+    .project--simple .project-intro { margin: 0; }
+
+    .extra {
+      border-top: 1px solid var(--line);
+      padding: 34px 0 58px;
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 70px;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    .extra p { margin: 0; }
+    .extra .small-link { display: inline-block; margin-top: 8px; font-size: 14px; }
+    .extra h3 {
+      margin: 0;
+      font: 500 27px/1.2 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      letter-spacing: -.025em;
+    }
+    footer {
+      min-height: 90px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer a { text-decoration: none; }
+
+    @media (max-width: 820px) {
+      .hero, .project-intro, .extra { grid-template-columns: 1fr; gap: 28px; }
+      .hero { padding: 80px 0 78px; }
+      .hello { max-width: 620px; }
+      .section { padding: 60px 0 56px; }
+      .project { padding: 38px 0 48px; }
+      .extra { padding: 34px 0 45px; }
+    }
+    @media (max-width: 540px) {
+      .shell { width: min(calc(100% - 30px), var(--max)); }
+      nav { min-height: 66px; }
+      .nav-links { gap: 16px; font-size: 13px; }
+      h1 { font-size: clamp(57px, 14vw, 80px); }
+      .gallery { grid-template-columns: 1fr; }
+      .project-copy p { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
   <div class="shell">
     <nav>
       <a class="brand" href="#top">Jun-Yuan Shih</a>
-      <div class="nav">
-        <a href="#work">Projects</a>
-        <a href="#notes">Field notes</a>
-        <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <div class="nav-links">
+        <a href="#things">Things I've made</a>
+        <a href="https://github.com/jamshih" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </div>
     </nav>
 
     <main id="top">
       <header class="hero">
-        <div>
-          <h1>I like <em>building things.</em></h1>
-          <div class="margin-note">Software is the easiest place for me to start right now. I’m also interested in rockets, gadgets, electronics, and a few hardware ideas I’m not ready to talk about yet.</div>
-        </div>
-        <div>
-          <p>I’m Jun-Yuan, a first-year medical student at Kaohsiung Medical University. I tend to look at my own life, notice something that could be better, and try to build a fix.</p>
-          <div class="quick">
-            <div class="quick-row"><b>Live in</b><span>Taichung, Taiwan</span></div>
-            <div class="quick-row"><b>Study in</b><span>Kaohsiung Medical University · Medicine</span></div>
-            <div class="quick-row"><b>Building</b><span>WrongBook · SearchRecall</span></div>
-            <div class="quick-row"><b>Just shipped</b><span><a href="https://apps.apple.com/app/%E9%8C%AF%E9%A1%8C%E6%9C%AC-%E9%8C%AF%E9%81%8E%E4%B8%80%E6%AC%A1-%E5%B0%B1%E5%88%A5%E5%86%8D%E9%8C%AF/id6806741024" target="_blank" rel="noopener noreferrer">WrongBook on the App Store ↗</a></span></div>
-          </div>
+        <h1>I like <em>building things.</em></h1>
+        <div class="hello">
+          <p>Hi, I'm Jun-Yuan. I study medicine in Taiwan, and I make things because it's fun.</p>
+          <p>Right now that's mostly software. I'm also into electronics, gadgets, and rockets.</p>
         </div>
       </header>
 
-      <section id="work">
-        <div class="section-head">
-          <div class="section-label">01 / Projects</div>
-          <h2>Both started with something in my own life that annoyed me enough to fix.</h2>
-        </div>
+      <div class="divider" aria-hidden="true"></div>
+
+      <section class="section" id="things">
+        <h2>Things I've made</h2>
 
         <article class="project">
-          <div>
-            <div class="project-code">WRONGBOOK / IOS / LIVE ON THE APP STORE</div>
+          <div class="project-intro">
             <h3>WrongBook</h3>
-            <p class="origin">While preparing for the GSAT, I kept doing questions I had already gotten wrong because I almost never revisited them properly. I thought it would be better if I could just build an app for that.</p>
-            <div class="launch-status">
-              <span class="launch-kicker">Launched in 2026 · iPhone + iPad</span>
-              <a class="launch-cta" href="https://apps.apple.com/app/%E9%8C%AF%E9%A1%8C%E6%9C%AC-%E9%8C%AF%E9%81%8E%E4%B8%80%E6%AC%A1-%E5%B0%B1%E5%88%A5%E5%86%8D%E9%8C%AF/id6806741024" target="_blank" rel="noopener noreferrer" aria-label="Get WrongBook on the App Store (opens in a new tab)">Get WrongBook on the App Store <span aria-hidden="true">↗</span></a>
+            <div class="project-copy">
+              <p>When I was preparing for exams, I kept forgetting to go back to questions I'd gotten wrong. So I made an app where I could save them, try them again, and actually remember what I missed.</p>
+              <div class="project-links">
+                <a href="https://apps.apple.com/app/id6806741024" target="_blank" rel="noopener noreferrer">App Store ↗</a>
+                <a href="https://xn--8pvq39ghhd.com" target="_blank" rel="noopener noreferrer">Website ↗</a>
+              </div>
             </div>
-            <dl class="facts">
-              <div class="fact"><dt>First version</dt><dd>Upload a photo of a question, add a few details, and log it. That was basically the product.</dd></div>
-              <div class="fact"><dt>Now live</dt><dd>Photo-based mistake capture, AI Tutor, subject maps, handwritten redo, and review planning.</dd></div>
-              <div class="fact"><dt>Built by me</dt><dd>Basically everything: iOS app, backend, AI pipeline, product design, subscriptions, deployment, and the debugging around all of it.</dd></div>
-              <div class="fact"><dt>Hardest work</dt><dd>OCR, math notation, diagram extraction, sync, reliability, and making the scanner behave consistently.</dd></div>
-              <div class="fact"><dt>Stack</dt><dd>Swift · Vision · Supabase · StoreKit · Edge Functions</dd></div>
-            </dl>
-            <div class="private">I keep the source private.</div>
           </div>
 
-          <div class="notebook">
-            <div class="notebook-title">NOTES FROM BUILDING IT</div>
-            <div class="note-line"><strong>The scanner is the part I’m proudest of.</strong><p>I put days into OCR and diagram extraction. The useful lesson was that “worked once” and “works reliably” are completely different standards.</p><span class="scribble">503s and inconsistent results made this obvious.</span></div>
-            <div class="note-line"><strong>I started caring about logging because guessing is awful.</strong><p>When failures felt random, I needed enough diagnostics to see what actually happened instead of poking at the app until the bug disappeared.</p></div>
-            <div class="note-line"><strong>I didn’t want the app to look AI-generated.</strong><p>The early UI kept coming back as white backgrounds, blue text, and generic components. I spent much more time on animation, custom assets, the subject map, and the question page than an MVP strictly needed.</p></div>
-          </div>
-
-          <div class="appshots" aria-label="WrongBook app screenshots">
-            <div class="appshots-head">
-              <small>OFFICIAL APP STORE SCREENS / IPAD</small>
-              <p>High-resolution images from the App Store. Select any screenshot to view it in full size.</p>
-            </div>
-            <div class="appshots-grid">
-              <figure class="appshot">
-                <a href="assets/wrongbook-today.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Today — plan reviews and follow your progress.">
-                  <img src="assets/wrongbook-today.webp" width="2048" height="1536" alt="WrongBook Today screen showcasing the daily learning dashboard and upcoming reviews." loading="lazy" decoding="async">
-                </a>
-                <figcaption>Today — plan reviews and follow your progress.</figcaption>
-              </figure>
-              <figure class="appshot">
-                <a href="assets/wrongbook-capture.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Capture — turn a question photo into a mistake to revisit.">
-                  <img src="assets/wrongbook-capture.webp" width="2048" height="1536" alt="WrongBook capture screen demonstrating how to add a question from photos or the camera." loading="lazy" decoding="async">
-                </a>
-                <figcaption>Capture — turn a question photo into a mistake to revisit.</figcaption>
-              </figure>
-              <figure class="appshot">
-                <a href="assets/wrongbook-learning-map.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Learning map — organize mistakes by subject and chapter.">
-                  <img src="assets/wrongbook-learning-map.webp" width="2048" height="1536" alt="WrongBook learning map showing subjects, chapters, review tools, and Recall Notebook." loading="lazy" decoding="async">
-                </a>
-                <figcaption>Learning map — organize mistakes by subject and chapter.</figcaption>
-              </figure>
-              <figure class="appshot">
-                <a href="assets/wrongbook-redo-ai-tutor.webp" target="_blank" rel="noopener noreferrer" aria-label="Open full-resolution WrongBook screenshot: Redo and AI Tutor — work through mistakes and understand why.">
-                  <img src="assets/wrongbook-redo-ai-tutor.webp" width="2048" height="1536" alt="WrongBook question rework screen showing handwritten scratch space and the AI Tutor." loading="lazy" decoding="async">
-                </a>
-                <figcaption>Redo and AI Tutor — work through mistakes and understand why.</figcaption>
-              </figure>
-            </div>
+          <div class="gallery" aria-label="WrongBook app screenshots">
+            <figure>
+              <a href="assets/wrongbook-today.webp" target="_blank" rel="noopener noreferrer" aria-label="Open WrongBook Today screenshot">
+                <img src="assets/wrongbook-today.webp" width="2048" height="1536" alt="WrongBook Today screen showing today's reviews and upcoming tasks" loading="lazy" decoding="async">
+              </a>
+              <figcaption>Today</figcaption>
+            </figure>
+            <figure>
+              <a href="assets/wrongbook-capture.webp" target="_blank" rel="noopener noreferrer" aria-label="Open WrongBook Capture screenshot">
+                <img src="assets/wrongbook-capture.webp" width="2048" height="1536" alt="WrongBook screen for capturing a question from a photo" loading="lazy" decoding="async">
+              </a>
+              <figcaption>Capture</figcaption>
+            </figure>
+            <figure>
+              <a href="assets/wrongbook-learning-map.webp" target="_blank" rel="noopener noreferrer" aria-label="Open WrongBook Learning Map screenshot">
+                <img src="assets/wrongbook-learning-map.webp" width="2048" height="1536" alt="WrongBook learning map showing subjects and chapters" loading="lazy" decoding="async">
+              </a>
+              <figcaption>Learning map</figcaption>
+            </figure>
+            <figure>
+              <a href="assets/wrongbook-redo-ai-tutor.webp" target="_blank" rel="noopener noreferrer" aria-label="Open WrongBook Redo screenshot">
+                <img src="assets/wrongbook-redo-ai-tutor.webp" width="2048" height="1536" alt="WrongBook redo screen with scratch paper and AI Tutor" loading="lazy" decoding="async">
+              </a>
+              <figcaption>Redo &amp; AI Tutor</figcaption>
+            </figure>
           </div>
         </article>
 
-        <article class="project">
-          <div>
-            <div class="project-code">SEARCHRECALL / WEB + EXTENSION / LIVE</div>
+        <article class="project project--simple">
+          <div class="project-intro">
             <h3>SearchRecall</h3>
-            <p class="origin">I would search an English word, understand it for a moment, and then never touch it again. If I was lucky I would see it later. If not, it might show up on a test and I’d think, “Darn it, I wish I had remembered that.”</p>
-            <dl class="facts">
-              <div class="fact"><dt>First version</dt><dd>A Chrome extension that sent my history to Gemini and asked which entries were English vocabulary searches.</dd></div>
-              <div class="fact"><dt>What it became</dt><dd>A learning workflow that turns supported searches and dictionary lookups into vocabulary records and review.</dd></div>
-              <div class="fact"><dt>Scale tested</dt><dd>Chrome History / Takeout imports with 100k+ records.</dd></div>
-              <div class="fact"><dt>Built by me</dt><dd>Web app, Chrome Helper, history processing, AI flow, backend, product design, and iteration after iteration.</dd></div>
-            </dl>
-            <a class="text-link" href="https://search-recall.com" target="_blank" rel="noreferrer">Open search-recall.com ↗</a>
-            <div class="private">Private codebase. The product itself is live.</div>
-          </div>
-
-          <div class="notebook">
-            <div class="notebook-title">WHY IT EXISTS</div>
-            <div class="note-line"><strong>Search → forget → see it on a test.</strong><p>I didn’t need another dictionary. I wanted the words I had already looked up to come back on purpose instead of depending on luck.</p></div>
-            <div class="note-line"><strong>The product grew from my own usage.</strong><p>The first version was simple. I kept adding features when I noticed what was missing rather than starting from a giant product plan.</p></div>
-            <div class="note-line"><strong>I build this way a lot.</strong><p>I notice something inefficient in my own life, make the smallest thing that might help, then keep iterating if I still care about the problem.</p></div>
+            <div class="project-copy">
+              <p>I'd look up an English word, understand it, and forget it again. SearchRecall saves words from searches and dictionary lookups so I can review them later.</p>
+              <div class="project-links">
+                <a href="https://search-recall.com" target="_blank" rel="noopener noreferrer">Visit SearchRecall ↗</a>
+              </div>
+            </div>
           </div>
         </article>
-      </section>
 
-      <section id="notes">
-        <div class="section-head">
-          <div class="section-label">02 / Field notes</div>
-          <h2>Things I learned by doing this badly first.</h2>
-        </div>
-        <div class="field-grid">
-          <div class="field-card"><small>AI + taste</small><p>At first I was amazed that AI could build anything. After seeing enough generic output, I started noticing immediately when something felt off.</p><div class="detail">AI makes the MVP easier. A curated product still comes from someone deciding what is worth keeping, changing, or throwing away.</div></div>
-          <div class="field-card"><small>Design workflow</small><p>“Implement this mockup” was not enough.</p><div class="detail">I browse Pinterest for references, analyze the style into a style guide, generate the mockup, ask another agent to list every asset in it, create those assets separately, then hand the full package to coding agents. That gets me much closer to the mockup than asking for code in one shot.</div></div>
-          <div class="field-card"><small>Agent workflow</small><p>I used to tell AI “fix this, fix that” and force changes into main.</p><div class="detail">Now I write a contract for bigger changes, use stronger models for planning and review, let agents challenge each other when they disagree, use cheaper models for implementation, validate on branches, smoke-test on a physical device, then merge.</div></div>
-          <div class="field-card"><small>Using models</small><p>I pay much more attention to context windows, token usage, and which model should do which job.</p><div class="detail">The model is part of the engineering choice now. I don’t want to spend expensive reasoning on mechanical work, and I don’t want a weaker model making architecture decisions just because it is available.</div></div>
-          <div class="field-card"><small>Starting</small><p>You can be preparing to do something big and still just start building.</p><div class="detail">A laptop and an AI-agent subscription are enough to try much more than they used to be. I would rather start with a fragile version and learn from it than wait until I feel ready for the whole thing.</div></div>
-          <div class="field-card"><small>Why I keep building</small><p>Because I love it and it’s fun.</p><div class="detail">Software is just an entry point for me. I want to build more than software eventually. Some ideas are still staying private.</div></div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-head">
-          <div class="section-label">03 / Process changed</div>
-          <h2>I’m still learning software engineering while shipping real software.</h2>
-        </div>
-        <div class="process-grid">
-          <p class="process-copy">A year ago I barely understood why PRs and branches mattered. Now I’m much more careful about how a change reaches main.</p>
-          <div class="process-list">
-            <div class="process-row"><span>01</span><div><strong>Write the change down first</strong><p>For larger work, I define the contract, constraints, and what counts as done before implementation starts.</p></div></div>
-            <div class="process-row"><span>02</span><div><strong>Separate planning from implementation</strong><p>I use stronger models for architecture and review, then cheaper models for the mechanical work when that is enough.</p></div></div>
-            <div class="process-row"><span>03</span><div><strong>Make disagreement useful</strong><p>If two agents reach different conclusions, I want the conflict surfaced and argued through instead of silently picking one answer.</p></div></div>
-            <div class="process-row"><span>04</span><div><strong>Validate before main</strong><p>Branches, builds, logs, and physical-device smoke tests matter because a clean-looking diff does not prove the product works.</p></div></div>
+        <div class="extra">
+          <h3>And one from high school</h3>
+          <div>
+            <p>I made the website for my iGEM team's project.</p>
+            <a class="small-link" href="https://2024.igem.wiki/mingdao/" target="_blank" rel="noopener noreferrer">Mingdao iGEM 2024 ↗</a>
           </div>
         </div>
       </section>
-
-      <section>
-        <div class="section-head">
-          <div class="section-label">04 / Background</div>
-          <h2>Medicine is what I study. Building is what I keep doing in the hours around it.</h2>
-        </div>
-        <div class="bio-grid">
-          <p class="bio-copy">I came from a math-and-science track, did research and iGEM in high school, and started medicine in 2026. I’m interested in startups, software, electronics, rockets, gadgets, and whatever else lets me turn an idea into a real thing.</p>
-          <div class="bio-list">
-            <div class="bio-row"><b>2026—</b><span>Medicine, Kaohsiung Medical University</span></div>
-            <div class="bio-row"><b>2024</b><span>iGEM team project</span></div>
-            <div class="bio-row"><b>High school</b><span>Mingdao High School · math & science gifted program · independent research · 3D printing club</span></div>
-            <div class="bio-row"><b>Home</b><span>Taichung, Taiwan</span></div>
-          </div>
-        </div>
-      </section>
-
-      <aside class="github">
-        <div class="section-label">About GitHub</div>
-        <p>WrongBook and SearchRecall are private repositories, so my public GitHub is a bad proxy for how much I build. I’d rather show the products and how I made them than manufacture public repos for the graph.</p>
-        <a href="https://github.com/jamshih" target="_blank" rel="noreferrer">github.com/jamshih ↗</a>
-      </aside>
     </main>
 
     <footer>
-      <span>© 2026 Jun-Yuan Shih</span>
-      <span>Taichung, Taiwan</span>
+      <span>Jun-Yuan Shih · Taichung, Taiwan</span>
+      <a href="https://github.com/jamshih" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </footer>
   </div>
 </body>
